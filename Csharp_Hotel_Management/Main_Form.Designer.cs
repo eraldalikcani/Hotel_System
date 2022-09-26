@@ -20,27 +20,9 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
-            this.SuspendLayout();
-            // 
-            // Main_Form
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1448, 693);
-            this.Name = "Main_Form";
-            this.Text = "Main_Form";
-            this.ResumeLayout(false);
-
-        }
-
-        #endregion
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem manageClientsToolStripMenuItem;
+        private ToolStripMenuItem manageRoomsToolStripMenuItem;
+        private ToolStripMenuItem manageReservationsToolStripMenuItem;
     }
 }
