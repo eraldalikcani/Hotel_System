@@ -44,18 +44,21 @@ namespace Csharp_Hotel_Management
             this.manageClientsToolStripMenuItem.Name = "manageClientsToolStripMenuItem";
             this.manageClientsToolStripMenuItem.Size = new System.Drawing.Size(149, 29);
             this.manageClientsToolStripMenuItem.Text = "Manage Clients";
+            this.manageClientsToolStripMenuItem.Click += new System.EventHandler(this.manageClientsToolStripMenuItem_Click);
             // 
             // manageRoomsToolStripMenuItem
             // 
             this.manageRoomsToolStripMenuItem.Name = "manageRoomsToolStripMenuItem";
             this.manageRoomsToolStripMenuItem.Size = new System.Drawing.Size(153, 29);
             this.manageRoomsToolStripMenuItem.Text = "Manage Rooms";
+            this.manageRoomsToolStripMenuItem.Click += new System.EventHandler(this.manageRoomsToolStripMenuItem_Click);
             // 
             // manageReservationsToolStripMenuItem
             // 
             this.manageReservationsToolStripMenuItem.Name = "manageReservationsToolStripMenuItem";
             this.manageReservationsToolStripMenuItem.Size = new System.Drawing.Size(196, 29);
             this.manageReservationsToolStripMenuItem.Text = "Manage Reservations";
+            this.manageReservationsToolStripMenuItem.Click += new System.EventHandler(this.manageReservationsToolStripMenuItem_Click);
             // 
             // Main_Form
             // 
@@ -70,6 +73,27 @@ namespace Csharp_Hotel_Management
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void manageClientsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ManageClientsForm manageCF = new ManageClientsForm();
+
+            manageCF.ShowDialog();
+        }
+
+        private void manageRoomsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ManageRoomsForm manageRF = new ManageRoomsForm();
+
+            manageRF.ShowDialog();
+        }
+
+        private void manageReservationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ManageReservationsForm manageRSRVF = new ManageReservationsForm();
+
+            manageRSRVF.ShowDialog();
         }
     }
 }
