@@ -34,8 +34,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1104, 696);
+            this.ClientSize = new System.Drawing.Size(1217, 709);
             this.Name = "ManageRoomsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ManageRoomsForm";
             this.ResumeLayout(false);
 

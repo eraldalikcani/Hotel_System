@@ -34,9 +34,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1186, 679);
+            this.ClientSize = new System.Drawing.Size(1215, 708);
             this.Name = "ManageClientsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ManageClientsForm";
+            this.Load += new System.EventHandler(this.ManageClientsForm_Load);
             this.ResumeLayout(false);
 
         }

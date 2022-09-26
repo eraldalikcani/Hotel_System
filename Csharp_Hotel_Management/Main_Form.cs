@@ -62,12 +62,20 @@ namespace Csharp_Hotel_Management
             // 
             // Main_Form
             // 
+            this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(1424, 706);
+            this.ControlBox = false;
             this.Controls.Add(this.menuStrip1);
+            this.Enabled = false;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
+            this.MdiChildrenMinimizedAnchorBottom = false;
+            this.MinimizeBox = false;
             this.Name = "Main_Form";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main_Form";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

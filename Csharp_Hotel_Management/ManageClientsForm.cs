@@ -16,5 +16,10 @@ namespace Csharp_Hotel_Management
         {
             InitializeComponent();
         }
+
+        private void ManageClientsForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
