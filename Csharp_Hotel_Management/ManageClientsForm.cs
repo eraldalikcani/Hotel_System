@@ -21,5 +21,19 @@ namespace Csharp_Hotel_Management
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            textBoxID.Text = "";
+            textBoxFirstName.Text = "";
+            textBoxLastName.Text = "";
+            textBoxPhone.Text = "";
+            textBoxCountry.Text = "";
+        }
     }
 }
