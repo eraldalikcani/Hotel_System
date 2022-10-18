@@ -18,23 +18,8 @@ namespace Csharp_Hotel_Management
             InitializeComponent();
         }
 
-        private void ManageClientsForm_Load(object sender, EventArgs e)
-        {
-            dataGridView1.DataSource = client.getClients();
-        }
 
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            textBoxID.Text = "";
-            textBoxFirstName.Text = "";
-            textBoxLastName.Text = "";
-            textBoxPhone.Text = "";
-            textBoxCountry.Text = "";
-        }
-
-
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonAddClient_Click(object sender, EventArgs e)
         {
             String fname = textBoxFirstName.Text;
             String lname = textBoxLastName.Text;
@@ -63,9 +48,19 @@ namespace Csharp_Hotel_Management
             
         }
 
-        private void ManageClientsForm_Load_1(object sender, EventArgs e)
+        private void ManageClientsForm_Load(object sender, EventArgs e)
         {
+            dataGridView1.DataSource = client.getClients();
 
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            textBoxID.Text = "";
+            textBoxFirstName.Text = "";
+            textBoxLastName.Text = "";
+            textBoxPhone.Text = "";
+            textBoxCountry.Text = "";
         }
     }
 }

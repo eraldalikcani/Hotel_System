@@ -87,7 +87,7 @@
             this.button4.TabIndex = 15;
             this.button4.Text = "Clear Fields";
             this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // button3
             // 
@@ -119,6 +119,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 16;
+            this.button1.Click += new System.EventHandler(this.buttonAddClient_Click);
             // 
             // dataGridView1
             // 
@@ -215,9 +216,13 @@
             // 
             // ManageClientsForm
             // 
-            this.ClientSize = new System.Drawing.Size(388, 237);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ClientSize = new System.Drawing.Size(1200, 692);
             this.Name = "ManageClientsForm";
-            this.Load += new System.EventHandler(this.ManageClientsForm_Load_1);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "ManageClientsForm";
+            this.Load += new System.EventHandler(this.ManageClientsForm_Load);
+            this.VisibleChanged += new System.EventHandler(this.ManageClientsForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -245,5 +250,8 @@
         private Label label1;
         private Button button4;
         private Button button3;
+
+        
+
     }
 }
