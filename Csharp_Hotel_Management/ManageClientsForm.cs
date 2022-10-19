@@ -63,30 +63,43 @@ namespace Csharp_Hotel_Management
 
         private void button2_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(textBoxId.Text);
+            int id;
             String fname = textBoxFirstName.Text;
             String lname = textBoxLastName.Text;
             String phone = textBoxPhone.Text;
             String country = textBoxCountry.Text;
 
-            if (fname.Trim().Equals("") || lname.Trim().Equals("") || phone.Trim().Equals(""))
+            try
             {
-                MessageBox.Show("Required Fields - First & Last Name + Phone Number", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                Boolean insertClient = client.insertClient(fname, lname, phone, country);
+                id = Convert.ToInt32(textBoxId.Text);
 
-                if (insertClient)
+                if (fname.Trim().Equals("") || lname.Trim().Equals("") || phone.Trim().Equals(""))
                 {
-                    dataGridView1.DataSource = client.getClients();
-                    MessageBox.Show("New Client Inserted Successfully", "Add Client", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Required Fields - First & Last Name + Phone Number", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    MessageBox.Show("ERROR - Client Not Inserted", "Add Client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Boolean editClient = client.editClient(id, fname, lname, phone, country);
+
+                    if (editClient)
+                    {
+                        dataGridView1.DataSource = client.getClients();
+                        MessageBox.Show("Client Updated Successfully", "Edit Client", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("ERROR - Client Not Updated", "Edit Client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
+
+
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ID Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+
+            
 
         }
 
@@ -103,6 +116,32 @@ namespace Csharp_Hotel_Management
             textBoxLastName.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
             textBoxPhone.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
             textBoxCountry.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = Convert.ToInt32(textBoxId.Text);
+
+                if (client.removeClient(id)){
+
+                    dataGridView1.DataSource = client.getClients();
+                    MessageBox.Show("Client Deleted Successfully", "Delete Client", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //clear all textboxes after the deletion
+                    //by calling the clear button
+                    button4.PerformClick();
+                }
+                else
+                {
+                    MessageBox.Show("ERROR - Client Not Deleted", "Delete Client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ID Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

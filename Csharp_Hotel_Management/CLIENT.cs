@@ -90,5 +90,32 @@ namespace Csharp_Hotel_Management
 
         }
 
+        //create a function to delete the selected client
+        //we only need the client id
+
+        public bool removeClient(int id)
+        {
+            MySqlCommand command = new MySqlCommand();
+            String removeQuery = "DELETE FROM `clients` WHERE `id`=@cid";
+            command.CommandText = removeQuery;
+            command.Connection = conn.getConnection();
+
+            //@cid
+            command.Parameters.Add("@cid", MySqlDbType.Int32).Value = id;
+
+            conn.openConnection();
+
+            if (command.ExecuteNonQuery() == 1)
+            {
+                conn.closeConnection();
+                return false;
+            }
+            else
+            {
+                conn.openConnection();
+                return true;
+            }
+        }
+
     }
 }
