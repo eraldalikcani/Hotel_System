@@ -133,7 +133,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(725, 516);
             this.dataGridView1.TabIndex = 11;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // textBoxCountry
             // 
@@ -248,7 +247,6 @@
             this.Controls.Add(this.panel1);
             this.Name = "ManageClientsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ManageClientsForm";
             this.Load += new System.EventHandler(this.ManageClientsForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
