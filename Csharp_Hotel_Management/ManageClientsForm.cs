@@ -18,32 +18,9 @@ namespace Csharp_Hotel_Management
             InitializeComponent();
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-           
-
-            
-        }
-
         private void ManageClientsForm_Load(object sender, EventArgs e)
         {
             dataGridView1.DataSource = client.getClients();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-           
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         //display the selected data from datagridview to textboxes
@@ -54,11 +31,6 @@ namespace Csharp_Hotel_Management
             textBoxLastName.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
             textBoxPhone.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
             textBoxCountry.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-           
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
