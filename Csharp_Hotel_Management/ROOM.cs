@@ -85,7 +85,8 @@ namespace Csharp_Hotel_Management
             command.Connection = conn.getConnection();
 
             //@rno,@rty,@pho,@fre
-            command.Parameters.Add("@rty", MySqlDbType.VarChar).Value = roomType;
+            command.Parameters.Add("@rno", MySqlDbType.Int32).Value = roomNumber;
+            command.Parameters.Add("@rty", MySqlDbType.Int32).Value = roomType;
             command.Parameters.Add("@pho", MySqlDbType.VarChar).Value = phone;
             command.Parameters.Add("@fre", MySqlDbType.VarChar).Value = free;
 
@@ -102,6 +103,33 @@ namespace Csharp_Hotel_Management
                 return true;
             }
 
+        }
+
+        //create a function to delete the selected room
+        //we only need the roomNumber
+
+        public bool removeRoom(int number)
+        {
+            MySqlCommand command = new MySqlCommand();
+            String removeQuery = "DELETE FROM `rooms` WHERE `roomNumber`=@rno";
+            command.CommandText = removeQuery;
+            command.Connection = conn.getConnection();
+
+            //@rno
+            command.Parameters.Add("@rno", MySqlDbType.Int32).Value = number;
+
+            conn.openConnection();
+
+            if (command.ExecuteNonQuery() == 1)
+            {
+                conn.closeConnection();
+                return false;
+            }
+            else
+            {
+                conn.openConnection();
+                return true;
+            }
         }
     }
 }

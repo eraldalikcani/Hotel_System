@@ -52,11 +52,70 @@ namespace Csharp_Hotel_Management
         private void buttonEditRoom_Click(object sender, EventArgs e)
         {
 
+            
+            int roomType = Convert.ToInt32(comboBoxRoomType.SelectedIndex.ToString());
+            String phone = textBoxPhone.Text;
+            String free = "";
+
+            try
+            {
+                int number = Convert.ToInt32(textBoxNumber.Text);
+                if (radioButtonYES.Checked)
+                {
+                    free = "Yes";
+                }
+                else
+                {
+                    free = "No";
+                }
+
+                Boolean editRoom = room.editRoom(number, roomType, phone, free);
+
+                if (editRoom = true)
+                {
+                    dataGridView1.DataSource = room.getRooms();
+                    MessageBox.Show("Room Updated Successfully", "Edit Room", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("ERROR - Room Not Updated", "Edit Room", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ID Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void buttonRemoveRoom_Click(object sender, EventArgs e)
         {
+            try
+            {
+                int number = Convert.ToInt32(textBoxNumber.Text);
+                bool removeRoom = room.removeRoom(number);
 
+                if (removeRoom = true)
+                {
+
+                    dataGridView1.DataSource = room.getRooms();
+                    MessageBox.Show("Room Deleted Successfully", "Delete Room", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //clear all textboxes after the deletion
+                    //by calling the clear button
+                    buttonClear.PerformClick();
+                }
+                else
+                {
+                    MessageBox.Show("ERROR - Room Not Deleted", "Delete Room", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Number Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void buttonClear_Click(object sender, EventArgs e)
@@ -64,6 +123,7 @@ namespace Csharp_Hotel_Management
             textBoxNumber.Text = "";
             comboBoxRoomType.SelectedIndex = 0;
             textBoxPhone.Text = "";
+            radioButtonYES.Checked = true;
         }
 
         private void radioButtonNO_CheckedChanged(object sender, EventArgs e)
@@ -78,6 +138,14 @@ namespace Csharp_Hotel_Management
             comboBoxRoomType.SelectedValue = dataGridView1.CurrentRow.Cells[1].Value;
             textBoxPhone.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
 
+            string free = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            if (free.Equals("Yes"))
+            {
+                radioButtonYES.Checked = true;
+            }else if (free.Equals("No"))
+            {
+                radioButtonNO.Checked = true;
+            }
         }
     }
 }
