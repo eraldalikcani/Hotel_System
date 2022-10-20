@@ -32,6 +32,22 @@ namespace Csharp_Hotel_Management
             return table;
         }
 
+        //create a function to get a list of rooms by type
+        public DataTable roomByType(int type)
+        {
+            MySqlCommand command = new MySqlCommand("SELECT * FROM `rooms` WHERE `type`=@typ", conn.getConnection());
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            DataTable table = new DataTable();
+
+            //@typ
+            command.Parameters.Add("@typ", MySqlDbType.Int32).Value = type;
+
+            adapter.SelectCommand = command;
+            adapter.Fill(table);
+
+            return table;
+        }
+
         //create a function to add a new room
 
         public bool insertRoom(int roomNumber, int roomType, String phone, String free)

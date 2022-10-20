@@ -37,22 +37,28 @@ namespace Csharp_Hotel_Management
             int type = Convert.ToInt32(comboBoxRoomType.SelectedValue.ToString());
             string phone = textBoxPhone.Text;
 
-            Boolean insertRoom = room.insertRoom(number, type, phone, "Yes");
-            if (insertRoom = true) 
+            if (number == 0 || type == 0 || phone.Trim().Equals(""))
             {
-                dataGridView1.DataSource = room.getRooms();
-                MessageBox.Show("Room Added Successfully","Add Room",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("Required Fields - Room Number, Room Type and Phone", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                MessageBox.Show("Room Not Added", "Add Room", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                Boolean insertRoom = room.insertRoom(number, type, phone, "Yes");
+                if (insertRoom = true)
+                {
+                    dataGridView1.DataSource = room.getRooms();
+                    MessageBox.Show("Room Added Successfully", "Add Room", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Room Not Added", "Add Room", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
         private void buttonEditRoom_Click(object sender, EventArgs e)
         {
-
-            
             int roomType = Convert.ToInt32(comboBoxRoomType.SelectedIndex.ToString());
             String phone = textBoxPhone.Text;
             String free = "";
@@ -69,24 +75,29 @@ namespace Csharp_Hotel_Management
                     free = "No";
                 }
 
-                Boolean editRoom = room.editRoom(number, roomType, phone, free);
-
-                if (editRoom = true)
+                if (number == 0 || roomType == 0 || phone.Trim().Equals(""))
                 {
-                    dataGridView1.DataSource = room.getRooms();
-                    MessageBox.Show("Room Updated Successfully", "Edit Room", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Required Fields - Room Number, Room Type and Phone", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    MessageBox.Show("ERROR - Room Not Updated", "Edit Room", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    Boolean editRoom = room.editRoom(number, roomType, phone, free);
+
+                    if (editRoom = true)
+                    {
+                        dataGridView1.DataSource = room.getRooms();
+                        MessageBox.Show("Room Updated Successfully", "Edit Room", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("ERROR - Room Not Updated", "Edit Room", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                
-
-
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "ID Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Room Number Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -114,7 +125,7 @@ namespace Csharp_Hotel_Management
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Number Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Room Number Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
