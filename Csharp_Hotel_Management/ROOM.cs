@@ -32,10 +32,9 @@ namespace Csharp_Hotel_Management
             return table;
         }
 
-        //create a function to get a list of rooms by type
         public DataTable roomByType(int type)
         {
-            MySqlCommand command = new MySqlCommand("SELECT * FROM `rooms` WHERE `type`=@typ", conn.getConnection());
+            MySqlCommand command = new MySqlCommand("SELECT * FROM `rooms` WHERE `roomType`=@typ", conn.getConnection());
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataTable table = new DataTable();
 
@@ -46,6 +45,30 @@ namespace Csharp_Hotel_Management
             adapter.Fill(table);
 
             return table;
+        }
+
+        //create a function to set room free column to NO
+        public bool setRoomFreeToNo( int number)
+        {
+            MySqlCommand command = new MySqlCommand("UPDATE `rooms` SET `free`='No' WHERE `roomNumber`=@rnm", conn.getConnection());
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            DataTable table = new DataTable();
+
+            //@rnm
+            command.Parameters.Add("@rnm", MySqlDbType.Int32).Value = number;
+
+            conn.openConnection();
+
+            if (command.ExecuteNonQuery() == 1)
+            {
+                conn.closeConnection();
+                return false;
+            }
+            else
+            {
+                conn.openConnection();
+                return true;
+            }
         }
 
         //create a function to add a new room
