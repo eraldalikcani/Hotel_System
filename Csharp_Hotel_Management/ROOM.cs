@@ -32,9 +32,10 @@ namespace Csharp_Hotel_Management
             return table;
         }
 
+        //create a function to get a list of rooms by type
         public DataTable roomByType(int type)
         {
-            MySqlCommand command = new MySqlCommand("SELECT * FROM `rooms` WHERE `roomType`=@typ", conn.getConnection());
+            MySqlCommand command = new MySqlCommand("SELECT * FROM `rooms` WHERE `roomType`=@typ and `free`='Yes'", conn.getConnection());
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataTable table = new DataTable();
 
@@ -47,15 +48,33 @@ namespace Csharp_Hotel_Management
             return table;
         }
 
-        //create a function to set room free column to NO
-        public bool setRoomFreeToNo( int number)
+        //create a function to return the room type id
+        public int getRoomType(int number)
         {
-            MySqlCommand command = new MySqlCommand("UPDATE `rooms` SET `free`='No' WHERE `roomNumber`=@rnm", conn.getConnection());
+            MySqlCommand command = new MySqlCommand("SELECT `type` FROM `rooms` WHERE `free`='Yes' `roomNumber`=@rnm", conn.getConnection());
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataTable table = new DataTable();
 
             //@rnm
             command.Parameters.Add("@rnm", MySqlDbType.Int32).Value = number;
+
+            adapter.SelectCommand = command;
+            adapter.Fill(table);
+
+            return Convert.ToInt32(table.Rows[0][0].ToString());
+        }
+
+
+        //create a function to set room free column to No or Yes
+        public bool setRoomFree( int number, String yes_or_no)
+        {
+            MySqlCommand command = new MySqlCommand("UPDATE `rooms` SET `free`='@yes_no' WHERE `roomNumber`=@rnm", conn.getConnection());
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            DataTable table = new DataTable();
+
+            //@rnm,@yes_no
+            command.Parameters.Add("@rnm", MySqlDbType.Int32).Value = number;
+            command.Parameters.Add("@yes_no", MySqlDbType.VarChar).Value = yes_or_no;
 
             conn.openConnection();
 

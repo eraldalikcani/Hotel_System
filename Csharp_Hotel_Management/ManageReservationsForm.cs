@@ -73,10 +73,10 @@ namespace Csharp_Hotel_Management
                 {
                     //date in must be =>today date
                     //date out must be =>date in
-                    if(dateIn < DateTime.Now)
+                    if( DateTime.Compare(dateIn.Date,DateTime.Now.Date) < 0 )
                     {
                         MessageBox.Show("The Date In must be = or > To Today Date", "Invalid Date In", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }else if (dateOut < dateIn)
+                    }else if ( DateTime.Compare(dateOut.Date, dateIn.Date) < 0)
                     {
                         MessageBox.Show("The Date Out must be = or > Date In", "Invalid Date Out", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
@@ -87,7 +87,7 @@ namespace Csharp_Hotel_Management
                         {
                             dataGridView1.DataSource = reserv.getAllReserv();
                             //set the room column to no
-                            room.setRoomFreeToNo(roomNumber);
+                            room.setRoomFree(roomNumber, "No");
                             
                             MessageBox.Show("Reservation Added Successfully", "Add Reservation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -140,7 +140,7 @@ namespace Csharp_Hotel_Management
                         {
                             dataGridView1.DataSource = reserv.getAllReserv();
                             //set the room column to no
-                            room.setRoomFreeToNo(roomNumber);
+                            room.setRoomFree(roomNumber, "No");
 
                             MessageBox.Show("Reservation Added Successfully", "Add Reservation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -163,6 +163,7 @@ namespace Csharp_Hotel_Management
             try
             {
                 int reservId = Convert.ToInt32(textBoxReservID.Text);
+                int roomNumber = Convert.ToInt32(dataGridView1.CurrentRow.Cells[1].Value.ToString());
                 bool removeReserv = reserv.removeReserv(reservId);
 
                 if (removeReserv = true)
@@ -170,9 +171,13 @@ namespace Csharp_Hotel_Management
 
                     dataGridView1.DataSource = reserv.getAllReserv();
                     MessageBox.Show("Reservation Deleted Successfully", "Delete Reservation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //after deletion of reservation we need to set the free column to "Yes"
+                    room.setRoomFree(roomNumber, "Yes");
+
                     //clear all textboxes after the deletion
                     //by calling the clear button
                     buttonClear.PerformClick();
+                    
                 }
                 else
                 {
@@ -192,10 +197,23 @@ namespace Csharp_Hotel_Management
 
             //we need to select the combo for rooms type
             //first we need to know the type of the room
-            comboBoxRoomNumber.SelectedValue = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+
+            //get the room id
+            int roomId = Convert.ToInt32(dataGridView1.CurrentRow.Cells[1].Value.ToString());
+
+            //select the room type from the combobox
+            comboBoxRoomType.SelectedValue = room.getRoomType(roomId);
+
+            //select the room number from the combobox
+            //if you need to set a room to a reservation
+            //you need to set the free room column to "Yes"
+            comboBoxRoomNumber.SelectedValue = roomId;
             textBoxClientID.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            
-           
+
+            dateTimePickerIN.Value = Convert.ToDateTime(dataGridView1.CurrentRow.Cells[3].Value.ToString());
+            dateTimePickerOUT.Value = Convert.ToDateTime(dataGridView1.CurrentRow.Cells[4].Value.ToString());
+
+
 
         }
     }
@@ -205,3 +223,5 @@ namespace Csharp_Hotel_Management
 //ALTER TABLE rooms add CONSTRAINT fk_type_id FOREIGN KEY (roomType) REFERENCES rooms_category(category_id) on UPDATE CASCADE on DELETE CASCADE;
 //ALTER TABLE reservations add CONSTRAINT fk_room_number FOREIGN KEY (roomNumber) REFERENCES rooms(roomNumber) on UPDATE CASCADE on DELETE CASCADE;
 //ALTER TABLE reservations add CONSTRAINT fk_client_id FOREIGN KEY (clientId) REFERENCES clients(id) on UPDATE CASCADE on DELETE CASCADE;
+
+//when you delete a room or client, all reservations associated with it will be deleted
