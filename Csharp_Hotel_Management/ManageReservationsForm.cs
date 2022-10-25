@@ -31,8 +31,10 @@ namespace Csharp_Hotel_Management
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
+            textBoxReservID.Text = "";
             textBoxClientID.Text = "";
             comboBoxRoomNumber.SelectedIndex = 0;
+            comboBoxRoomType.SelectedIndex = 0;
             dateTimePickerIN.Value = DateTime.Now;
             dateTimePickerOUT.Value = DateTime.Now;
         }
@@ -56,16 +58,16 @@ namespace Csharp_Hotel_Management
 
         private void buttonAddReserv_Click(object sender, EventArgs e)
         {
-
             try
             {
+                
                 int clientId = Convert.ToInt32(textBoxClientID.Text);
                 int roomType = Convert.ToInt32(comboBoxRoomType.SelectedValue.ToString());
                 int roomNumber = Convert.ToInt32(comboBoxRoomNumber.SelectedValue);
                 DateTime dateIn = dateTimePickerIN.Value;
                 DateTime dateOut = dateTimePickerOUT.Value;
 
-                if (clientId == 0 || roomType == 0)
+                if ( clientId == 0 || roomNumber == 0 )
                 {
                     MessageBox.Show("Required Fields - Room Number, Room Type and Client ID", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -194,12 +196,12 @@ namespace Csharp_Hotel_Management
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             textBoxReservID.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-
+            textBoxClientID.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
             //we need to select the combo for rooms type
             //first we need to know the type of the room
 
             //get the room id
-            int roomId = Convert.ToInt32(dataGridView1.CurrentRow.Cells[1].Value.ToString());
+            int roomId = Convert.ToInt32(dataGridView1.CurrentRow.Cells[1].Value);
 
             //select the room type from the combobox
             comboBoxRoomType.SelectedValue = room.getRoomType(roomId);
@@ -208,7 +210,7 @@ namespace Csharp_Hotel_Management
             //if you need to set a room to a reservation
             //you need to set the free room column to "Yes"
             comboBoxRoomNumber.SelectedValue = roomId;
-            textBoxClientID.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            
 
             dateTimePickerIN.Value = Convert.ToDateTime(dataGridView1.CurrentRow.Cells[3].Value.ToString());
             dateTimePickerOUT.Value = Convert.ToDateTime(dataGridView1.CurrentRow.Cells[4].Value.ToString());

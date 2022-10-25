@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.radioButtonNO = new System.Windows.Forms.RadioButton();
+            this.radioButtonYES = new System.Windows.Forms.RadioButton();
             this.comboBoxRoomType = new System.Windows.Forms.ComboBox();
             this.buttonClear = new System.Windows.Forms.Button();
             this.buttonRemoveRoom = new System.Windows.Forms.Button();
@@ -44,8 +46,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.radioButtonYES = new System.Windows.Forms.RadioButton();
-            this.radioButtonNO = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -76,6 +76,29 @@
             this.panel1.Size = new System.Drawing.Size(1259, 701);
             this.panel1.TabIndex = 1;
             // 
+            // radioButtonNO
+            // 
+            this.radioButtonNO.AutoSize = true;
+            this.radioButtonNO.Location = new System.Drawing.Point(270, 292);
+            this.radioButtonNO.Name = "radioButtonNO";
+            this.radioButtonNO.Size = new System.Drawing.Size(61, 29);
+            this.radioButtonNO.TabIndex = 18;
+            this.radioButtonNO.TabStop = true;
+            this.radioButtonNO.Text = "No";
+            this.radioButtonNO.UseVisualStyleBackColor = true;
+            this.radioButtonNO.CheckedChanged += new System.EventHandler(this.radioButtonNO_CheckedChanged);
+            // 
+            // radioButtonYES
+            // 
+            this.radioButtonYES.AutoSize = true;
+            this.radioButtonYES.Location = new System.Drawing.Point(202, 292);
+            this.radioButtonYES.Name = "radioButtonYES";
+            this.radioButtonYES.Size = new System.Drawing.Size(62, 29);
+            this.radioButtonYES.TabIndex = 17;
+            this.radioButtonYES.TabStop = true;
+            this.radioButtonYES.Text = "Yes";
+            this.radioButtonYES.UseVisualStyleBackColor = true;
+            // 
             // comboBoxRoomType
             // 
             this.comboBoxRoomType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -84,6 +107,7 @@
             this.comboBoxRoomType.Name = "comboBoxRoomType";
             this.comboBoxRoomType.Size = new System.Drawing.Size(222, 33);
             this.comboBoxRoomType.TabIndex = 16;
+            this.comboBoxRoomType.SelectedIndexChanged += new System.EventHandler(this.comboBoxRoomType_SelectedIndexChanged);
             // 
             // buttonClear
             // 
@@ -227,29 +251,6 @@
             this.label1.Size = new System.Drawing.Size(368, 60);
             this.label1.TabIndex = 0;
             this.label1.Text = "Manage Rooms";
-            // 
-            // radioButtonYES
-            // 
-            this.radioButtonYES.AutoSize = true;
-            this.radioButtonYES.Location = new System.Drawing.Point(202, 292);
-            this.radioButtonYES.Name = "radioButtonYES";
-            this.radioButtonYES.Size = new System.Drawing.Size(62, 29);
-            this.radioButtonYES.TabIndex = 17;
-            this.radioButtonYES.TabStop = true;
-            this.radioButtonYES.Text = "Yes";
-            this.radioButtonYES.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonNO
-            // 
-            this.radioButtonNO.AutoSize = true;
-            this.radioButtonNO.Location = new System.Drawing.Point(270, 292);
-            this.radioButtonNO.Name = "radioButtonNO";
-            this.radioButtonNO.Size = new System.Drawing.Size(61, 29);
-            this.radioButtonNO.TabIndex = 18;
-            this.radioButtonNO.TabStop = true;
-            this.radioButtonNO.Text = "No";
-            this.radioButtonNO.UseVisualStyleBackColor = true;
-            this.radioButtonNO.CheckedChanged += new System.EventHandler(this.radioButtonNO_CheckedChanged);
             // 
             // ManageRoomsForm
             // 

@@ -27,6 +27,7 @@ namespace Csharp_Hotel_Management
             comboBoxRoomType.DataSource = room.roomTypeList();
             comboBoxRoomType.DisplayMember = "label";
             comboBoxRoomType.ValueMember = "category_id";
+            radioButtonYES.Checked = true;
 
             dataGridView1.DataSource = room.getRooms();
         }
@@ -146,10 +147,11 @@ namespace Csharp_Hotel_Management
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             textBoxNumber.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            comboBoxRoomType.SelectedValue = dataGridView1.CurrentRow.Cells[1].Value;
+            comboBoxRoomType.SelectedValue = dataGridView1.CurrentRow.Cells[1].Value.ToString();
             textBoxPhone.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
 
             string free = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+
             if (free.Equals("Yes"))
             {
                 radioButtonYES.Checked = true;
@@ -157,6 +159,11 @@ namespace Csharp_Hotel_Management
             {
                 radioButtonNO.Checked = true;
             }
+        }
+
+        private void comboBoxRoomType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

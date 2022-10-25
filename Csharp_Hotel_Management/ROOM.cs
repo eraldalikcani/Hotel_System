@@ -51,7 +51,7 @@ namespace Csharp_Hotel_Management
         //create a function to return the room type id
         public int getRoomType(int number)
         {
-            MySqlCommand command = new MySqlCommand("SELECT `type` FROM `rooms` WHERE `free`='Yes' `roomNumber`=@rnm", conn.getConnection());
+            MySqlCommand command = new MySqlCommand("SELECT `roomType` FROM `rooms` WHERE `free`='Yes' AND `roomNumber`=@rnm", conn.getConnection());
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataTable table = new DataTable();
 
@@ -61,14 +61,14 @@ namespace Csharp_Hotel_Management
             adapter.SelectCommand = command;
             adapter.Fill(table);
 
-            return Convert.ToInt32(table.Rows[0][0].ToString());
+            return Convert.ToInt32( table.Rows[0][0].ToString() );
         }
 
 
         //create a function to set room free column to No or Yes
         public bool setRoomFree( int number, String yes_or_no)
         {
-            MySqlCommand command = new MySqlCommand("UPDATE `rooms` SET `free`='@yes_no' WHERE `roomNumber`=@rnm", conn.getConnection());
+            MySqlCommand command = new MySqlCommand("UPDATE `rooms` SET `free`='No' WHERE `roomNumber`=@rnm", conn.getConnection());
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataTable table = new DataTable();
 

@@ -16,7 +16,7 @@ namespace Csharp_Hotel_Management
 
     internal class CONNECT
     {
-        private MySqlConnection connection = new MySqlConnection("datasource=localhost;port=3306;username=root;password=;database=Csharp_Hotel_DB");
+        private MySqlConnection connection = new MySqlConnection("datasource=localhost;port=3306;username=root;password=;database=csharp_hotel_db");
 
         //create a function to return our connection
         public MySqlConnection getConnection()

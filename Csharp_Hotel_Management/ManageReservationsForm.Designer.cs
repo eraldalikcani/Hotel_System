@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBoxReservID = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.dateTimePickerOUT = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerIN = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
@@ -47,8 +49,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBoxReservID = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -81,6 +81,23 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1252, 681);
             this.panel1.TabIndex = 2;
+            // 
+            // textBoxReservID
+            // 
+            this.textBoxReservID.Location = new System.Drawing.Point(192, 136);
+            this.textBoxReservID.Name = "textBoxReservID";
+            this.textBoxReservID.Size = new System.Drawing.Size(222, 31);
+            this.textBoxReservID.TabIndex = 27;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(73, 136);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(116, 27);
+            this.label7.TabIndex = 26;
+            this.label7.Text = "Reserv ID:";
             // 
             // dateTimePickerOUT
             // 
@@ -263,23 +280,6 @@
             this.label1.Size = new System.Drawing.Size(501, 60);
             this.label1.TabIndex = 0;
             this.label1.Text = "Manage Reservations";
-            // 
-            // textBoxReservID
-            // 
-            this.textBoxReservID.Location = new System.Drawing.Point(192, 136);
-            this.textBoxReservID.Name = "textBoxReservID";
-            this.textBoxReservID.Size = new System.Drawing.Size(222, 31);
-            this.textBoxReservID.TabIndex = 27;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(73, 136);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(116, 27);
-            this.label7.TabIndex = 26;
-            this.label7.Text = "Reserv ID:";
             // 
             // ManageReservationsForm
             // 
