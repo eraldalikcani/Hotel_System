@@ -61,7 +61,9 @@ namespace Csharp_Hotel_Management
             adapter.SelectCommand = command;
             adapter.Fill(table);
 
-            return Convert.ToInt32( table.Rows[0][0].ToString() );
+            int result = Convert.ToInt32(table.Rows[0][0].ToString());
+
+            return result;
         }
 
 
