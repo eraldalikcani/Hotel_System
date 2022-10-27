@@ -206,6 +206,7 @@ namespace Csharp_Hotel_Management
             int roomId = Convert.ToInt32(dataGridView1.CurrentRow.Cells[1].Value.ToString());
             //select the room type from the combobox
             comboBoxRoomType.SelectedValue = room.getRoomType(roomId);
+            
             //select the room number from the combobox
             //if you need to set a room to a reservation
             //you need to set the free room column to "Yes"

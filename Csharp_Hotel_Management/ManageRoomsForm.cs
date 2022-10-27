@@ -76,9 +76,9 @@ namespace Csharp_Hotel_Management
                     free = "No";
                 }
 
-                if (number == 0 || roomType == 0 || phone.Trim().Equals(""))
+                if (number == 0 || roomType == 0)
                 {
-                    MessageBox.Show("Required Fields - Room Number, Room Type and Phone", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Required Fields - Room Number and Room Type", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {

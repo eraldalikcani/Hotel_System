@@ -61,9 +61,19 @@ namespace Csharp_Hotel_Management
             adapter.SelectCommand = command;
             adapter.Fill(table);
 
-            int result = Convert.ToInt32(table.Rows[0][0].ToString());
+            if (table.Rows.Count > 0)
+            {
+                int result = Convert.ToInt32(table.Rows[0][0].ToString());
 
-            return result;
+                return result;
+            }
+            else
+            {
+                MessageBox.Show("The selected room is not free and it will not show in the dropdown list.", "Room Number Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;
+            }
+
+
         }
 
 
